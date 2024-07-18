@@ -1,0 +1,47 @@
+### 멤버 간략 조회
+GET http://localhost:8080/api/member/detail/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOlsiUk9MRV9NRU1CRVIiXSwiaWF0IjoxNzE0NDk0NzkyLCJleHAiOjE3MTQ0OTgzOTJ9.iEeObAf_J-UPLpG-gvObQic5mBhuz-9bT3Wqa3w7GBE
+
+### 내 정보 상세 조회
+GET http://localhost:8080/api/member/detail
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOlsiUk9MRV9NRU1CRVIiXSwiaWF0IjoxNzE0NDk0NzkyLCJleHAiOjE3MTQ0OTgzOTJ9.iEeObAf_J-UPLpG-gvObQic5mBhuz-9bT3Wqa3w7GBE
+
+### 이메일 중복 여부 조회
+GET http://localhost:8080/api/member/check/email?email=example1@example.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOlsiUk9MRV9NRU1CRVIiXSwiaWF0IjoxNzE0NDk0NzkyLCJleHAiOjE3MTQ0OTgzOTJ9.iEeObAf_J-UPLpG-gvObQic5mBhuz-9bT3Wqa3w7GBE
+
+### 닉네임 중복 여부 조회
+GET http://localhost:8080/api/member/check/nickname?nickname=78cf1feb-eac3-4bfa-8e7a-fefda2300a40
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOlsiUk9MRV9NRU1CRVIiXSwiaWF0IjoxNzE0NjQyMTU4LCJleHAiOjE3MTQ2NDU3NTh9.HHcYuEH4ayS6fbiuEg5VBZc3jMGNloc9BNQrtPX9cZ8
+
+### 프로필 이미지 변경
+PUT http://localhost:8080/api/member/profile_img
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwicm9sZXMiOlsiUk9MRV9NRU1CRVIiXSwiaWF0IjoxNzE2MTQxMTQ4LCJleHAiOjE3MTYyMjc1NDh9.9YXkBHxthZpqtrIPbesG39jPR7qHwXf-8vi8xW5CPIQ
+
+--WebAppBoundary
+Content-Disposition: form-data; name="profileImg"; filename="파일명.{확장자명}"
+Content-Type: image/확장자명
+
+< {경로}\{파일명.{확장자명}}
+--WebAppBoundary
+
+
+### 닉네임 변경
+PUT http://localhost:8080/api/member/nickname
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOlsiUk9MRV9NRU1CRVIiXSwiaWF0IjoxNzE0NjY4OTgyLCJleHAiOjE3MTQ2NzI1ODJ9.hzsoRMNKZHVkzGMnq3x0hvI6rSe6y5TZbRyjC68QD2g
+Content-Type: application/json
+
+{
+  "nickName": "asfasd"
+}
+
+### 추가 정보 입력
+PUT http://localhost:8080/api/member/additionalInfo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOlsiUk9MRV9NRU1CRVIiXSwiaWF0IjoxNzE1ODgyMTMzLCJleHAiOjE3MTU5Njg1MzN9.59FsdyMi5lKL72G5iN2u4yZdE1YEQaVId1zvOznXYZI
+Content-Type: application/json
+
+{
+  "birthDate": "1999-01-01",
+  "gender": "FEMALE"
+}

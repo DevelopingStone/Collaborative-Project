@@ -1,0 +1,73 @@
+spring:
+  jwt:
+    secret: ZGF5b25lLXNwcmluZy1ib290LWRpdmlkZW5kLXByb2plY3QtdHV0b3JpYWwtand0LXNlY3JldC1rZXkK
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/withme?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: withus
+    password: withuspassword
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  security:
+    origin:
+      allow:
+        url: "*"
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: ${KAKAO_CLIENT_ID}
+            client-secret: ${KAKAO_CLIENT_SECRET}
+            redirect-uri: ${SPRING_HOST}:8080/login/oauth2/code/kakao
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_post
+            client-name: Kakao
+            scope:
+              - profile_nickname
+              - profile_image
+              - account_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+  elasticsearch:
+    uri : localhost:9200
+  gathering:
+    reminder:
+      cron: ${GATHERING_REMAINDER_CRON}
+cool-sms:
+  api-key: cool-sms.api-key
+  api-secret-key: cool-sms.api-secret-key
+  domain: https://api.coolsms.co.kr
+  sender-phone-number: cool-sms.sender-phone-number
+
+redis:
+  key:
+    prefix:
+      auth-sms: "AuthSms: "
+
+cloud:
+  aws:
+    s3:
+      bucketName: ${S3_BUCKET_NAME}
+      region: ap-northeast-2
+      accessKey: ${S3_ACCESS_KEY}
+      secretKey: ${S3_SECRET_KEY}
+    stack:
+      auto: false
+
+front:
+  url: http://localhost:5173
+
+festival:
+  api:
+    url: http://openapi.seoul.go.kr:8088/sample/json/culturalEventInfo
